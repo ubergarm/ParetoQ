@@ -6,15 +6,18 @@ This repository contains the training code of ParetoQ introduced in our work: "[
 In this work, we present ParetoQ, the first unified framework that facilitates rigorous comparisons across 1-bit, 1.58-bit, 2-bit, 3-bit, and 4-bit quantization settings. By optimizing training schemes and refining quantization functions, ParetoQ surpasses all previous methods tailored to specific bit widths.  Specifically, the 1.58-bit ParetoQ LLaMA-3 8B model reduces the performance gap to full precision by relatively 37.8% compared to the 1-bit Era’s 1.58-bit LLaMA-3 8B model, while using only 30% of the training tokens.
 
 <div align=center>
-<img width=60% src="https://github.com/user-attachments/assets/5a3a3013-5008-45c7-bde3-360201bb4b21"/>
+<img width=50% src="./main_result_ternary.jpg"/>
 </div>
 
-![Image](https://github.com/user-attachments/assets/de6683c9-6832-4b0f-bb48-6b16af101eb1)
+<div align=center>
+<img width=100% src="./main_result_234bit.jpg"/>
+</div>
 
 With the SoTA points obtained through ParetoQ, we are able to improve the scaling law analysis. Figure (a) (b) demonstrates that sub-4-bit quantization, including binary, ternary, 2-bit, and 3-bit, often outperform 4-bit quantization. Notably, 2-bit and ternary models reside on the Pareto frontier. When considering hardware-friendliness and real-time speed, we generally recommend exploring 2-bit quantization for on-device applications.
 
-![Image](https://github.com/user-attachments/assets/43ac28fc-ac71-430e-9031-f5dd6636fc0f)
-
+<div align=center>
+<img width=100% src="./main_result_scaling_law.jpg"/>
+</div>
 ## Citation
 
 If you find our code useful for your research, please consider citing:
