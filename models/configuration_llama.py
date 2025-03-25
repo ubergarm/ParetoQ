@@ -1,10 +1,8 @@
-# coding=utf-8
 # Copyright (c) Meta Platforms, Inc. and affiliates.
-# All rights reserved.
-#
-# This source code is licensed under the license found in the
+
+# This source code is licensed under the BSD-style license found in the
 # LICENSE file in the root directory of this source tree.
-#
+
 # coding=utf-8
 # Copyright 2022 EleutherAI and the HuggingFace Inc. team. All rights reserved.
 #
