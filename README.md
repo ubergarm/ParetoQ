@@ -65,7 +65,7 @@ The results reported in the paper is run with the internal LLaMA codebase in Met
 
 ## Acknowledgement
 
-This code is partially based on HuggingFace transformer repo.
+This code is partially based on HuggingFace [Transformers](https://github.com/huggingface/transformers) repo, with [Apache License](https://github.com/huggingface/transformers/blob/main/LICENSE).
 
 ## Contact
 
