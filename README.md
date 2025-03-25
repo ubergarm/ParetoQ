@@ -75,4 +75,5 @@ Changsheng Zhao, Reality Labs, Meta Inc (cszhao at meta dot com)
 
 ## License
 
-BiT is CC-BY-NC 4.0 licensed as of now.
+ParetoQ is released under the [BSD 3](https://github.com/facebookresearch/ParetoQ/blob/main/LICENSE) license.
+
