@@ -3,6 +3,10 @@
 # This source code is licensed under the BSD-style license found in the
 # LICENSE file in the root directory of this source tree.
 
+import sys
+import signal
+from datasets import load_dataset
+
 import math
 from models.configuration_llama import LlamaConfig
 from models.modeling_llama_quant import (
@@ -78,12 +82,14 @@ def train():
         if data_args.eval_data_local_path is not None
         else None,
     )
+
     train_data = datautils.CustomJsonDataset(
         train_dataset, tokenizer, block_size=training_args.model_max_length
     )
     valid_data = datautils.CustomJsonDataset(
         valid_dataset, tokenizer, block_size=min(training_args.model_max_length, 1024)
     )
+
     model.config.use_cache = False
     myTrainer = Trainer
     trainer = myTrainer(
@@ -94,6 +100,15 @@ def train():
         eval_dataset=valid_data if training_args.do_eval else None,
         data_collator=default_data_collator,
     )
+
+    # Make sure to save final output if exiting early due to <control>+c SIGINT.
+    def signal_handler(sig, frame):
+        log.info(f"Caught SIGINT! Saving latest model to {model_args.output_model_local_path} and exiting!")
+        trainer.save_state()
+        utils.safe_save_model_for_hf_trainer(trainer, model_args.output_model_local_path)
+        #TODO WARNING: destroy_process_group() was not called before program exit, which can leak resources.
+        sys.exit(0)
+    signal.signal(signal.SIGINT, signal_handler)
 
     if training_args.do_train:
         train_result = trainer.train()

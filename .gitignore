@@ -1,0 +1,4 @@
+checkpoints/
+venv/
+*.jsonl
+*/__pycache__/*
